@@ -15,19 +15,35 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/C/Users/Szwagier/Desktop/temp.tex",
+			"settings":
+			{
+				"buffer_size": 10330,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 265.0,
 		"selected_items":
 		[
 			[
-				"in",
+				"inst",
 				"Package Control: Install Package"
 			],
 			[
 				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"latexing",
+				"LaTeXing: Check System"
+			],
+			[
+				"in",
 				"Package Control: Install Package"
 			],
 			[
@@ -80,6 +96,14 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Szwagier/Desktop/temp2.tex",
+		"/C/Users/Szwagier/Desktop/temp.log",
+		"/C/Users/Szwagier/Desktop/temp.tex",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/LaTeXTools/viewPDF.py",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/LaTeXTools/LaTeXTools Preferences.sublime-settings",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/User/LaTeXing.sublime-settings",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/LaTeXing/LaTeXing.sublime-settings",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/LaTeXing/LaTeX.sublime-build",
 		"/C/Users/Szwagier/Documents/GitHub/dark_side_of_the_sky/.gitattributes",
 		"/C/Program Files (x86)/Red Alert 2/Ra2md.ini",
 		"/C/Program Files (x86)/Red Alert 2/RA2.INI",
@@ -103,7 +127,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -117,6 +141,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"viewercmd = "
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -134,8 +159,124 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Szwagier/Desktop/temp.tex",
+					"settings":
+					{
+						"buffer_size": 10330,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1094,
+								1094
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -170,6 +311,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
 	"replace":
 	{
 		"height": 0.0
