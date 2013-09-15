@@ -1,0 +1,204 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"new",
+				"new_task"
+			],
+			[
+				"re",
+				"request"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"inta",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"sni blo",
+				"Snippet: block"
+			],
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
+			[
+				"git ",
+				"Git: Init"
+			],
+			[
+				"package con",
+				"Package Control: Add Repository"
+			],
+			[
+				"package control",
+				"Package Control: Discover Packages"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Szwagier/Documents/GitHub/dark_side_of_the_sky/.gitattributes",
+		"/C/Program Files (x86)/Red Alert 2/Ra2md.ini",
+		"/C/Program Files (x86)/Red Alert 2/RA2.INI",
+		"/C/Users/Szwagier/Desktop/Paweł Szwagierek - Projekt Systemy Operacyjne 2 - Samochody, stacje benzynowe i warsztat/main.cpp",
+		"/D/Magazyn/pulpit/todo/stm32/usart/STM32_USART_Irq/Usart.c",
+		"/C/Users/Szwagier/Desktop/Paweł Szwagierek - Projekt Systemy Operacyjne 2 - Samochody, stacje benzynowe i warsztat/stacja.h",
+		"/C/Users/Szwagier/Desktop/Paweł Szwagierek - Projekt Systemy Operacyjne 2 - Samochody, stacje benzynowe i warsztat/samochod.h",
+		"/C/Users/Szwagier/Desktop/Paweł Szwagierek - Projekt Systemy Operacyjne 2 - Samochody, stacje benzynowe i warsztat/obiekt.h",
+		"/C/Users/Szwagier/Desktop/Paweł Szwagierek - Projekt Systemy Operacyjne 2 - Samochody, stacje benzynowe i warsztat/warsztat.h",
+		"/C/Users/Szwagier/Documents/GitHub/raytrace/django/django/app/app/views.py",
+		"/C/Users/Szwagier/Desktop/Paweł Szwagierek - Projekt Systemy Operacyjne 2 - Samochody, stacje benzynowe i warsztat/Makefile",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/Git/Git.sublime-settings",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/SublimeLinter/README.md",
+		"/C/Users/Szwagier/Documents/GitHub/raytrace/django/django/app/skr.sh",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/Szwagier/Documents/GitHub/raytrace/django/django/app/app/models.pyc",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/SublimeLinter/Default (Windows).sublime-keymap",
+		"/C/Users/Szwagier/Documents/GitHub/raytrace/django/django/app/templates/new_task.html",
+		"/C/Users/Szwagier/Desktop/rower.txt",
+		"/C/Users/Szwagier/AppData/Roaming/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"vi",
+				"app/views.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
