@@ -1,0 +1,1 @@
+Mikroprocesorowy sterownik anten do komunikacji satelitarnej

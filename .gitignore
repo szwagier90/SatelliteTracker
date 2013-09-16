@@ -6,6 +6,7 @@
 *.log
 *.synctex.gz
 *.pdf
+*.toc
 
 #################
 ## Keil
