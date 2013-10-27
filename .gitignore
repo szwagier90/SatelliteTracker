@@ -9,13 +9,3 @@
 *.toc
 *.fdb_latexmk
 *.fls
-
-#################
-## Keil
-#################
-
-*.uvopt
-*.uvgui.*
-*.dep
-*.bak
-*.htm
