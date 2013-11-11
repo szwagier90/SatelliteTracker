@@ -9,3 +9,10 @@
 *.toc
 *.fdb_latexmk
 *.fls
+
+#################
+## CooCox
+#################
+
+Project/SatelliteTracker/Debug
+*.pbxproj
