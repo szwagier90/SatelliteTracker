@@ -8,8 +8,6 @@ void GPIO_conf(void);
 void USART_conf(void);
 void NVIC_conf(void);
 
-volatile uint8_t sign = '0';
-volatile uint8_t w_received = 0;
 
 int main(void)
 {
@@ -18,41 +16,8 @@ int main(void)
     USART_conf();
     NVIC_conf();
 
-    w_received = 0;
-
     while(1)
     {
-    }
-}
-
-void SysTick_Handler(void)
-{
-    if(w_received)
-    {
-        sign = 'W';
-        GPIO_Write(GPIOA, sign);
-    }
-    else
-    {
-        sign += 1;
-        GPIO_Write(GPIOA, sign);
-
-    }
-
-    USART_SendData(USART1, sign);
-}
-
-void USART1_IRQHandler(void)
-{
-    if(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == SET)
-    {
-        sign = USART_ReceiveData(USART1);
-        if(sign == 'W')
-        {
-            w_received = 1;
-        }
-
-        USART_SendData(USART1, '!');
     }
 }
 
