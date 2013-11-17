@@ -15,106 +15,103 @@ void USART1_IRQHandler(void)
     {
         received = USART_ReceiveData(USART1);
 
-        if(WORD_WAIT_FOR_DATA == dde_word_state)
-            word_wait_for_data();
-        else if(WORD_BEGIN == dde_word_state)
-            word_begin();
-        else if(WORD_AZIMUTH == dde_word_state)
-            word_azimuth();
-        else if(WORD_AZIMUTH_CHECKED == dde_word_state)
-            word_azimuth_checked();
-        else if(WORD_ELEVATION == dde_word_state)
-            word_elevation();
-        else if(WORD_COORDINATES_STORED == dde_word_state)
-            word_coordinates_stored();
+        if(ASCII_DDE_STRING_BEGIN == received)
+            word_reset();
+        else if(ASCII_DDE_STRING_END == received)
+            word_end();
+        else if(WORD_READING == dde_state)
+            word_reading();
+        else if(WORD_ERROR == dde_state)
+            word_error();
 
         USART_SendData(USART1, received);
     }
 }
 
-inline void word_wait_for_data()
+inline void word_reset()
 {
-    if(ASCII_DDE_STRING_BEGIN == received)
-        dde_word_state = WORD_BEGIN;
+    dde_string_counter = 0x0;
+    dde_state = WORD_READING;
 }
 
-inline void word_begin()
+inline void word_reading()
 {
-    if(is_digit(received))
+    if(dde_string_counter < DDE_STRING_LENGTH)
     {
-        azimuth_buffer = atoi(received);
-        dde_word_state = WORD_AZIMUTH;
+        dde_string[dde_string_counter] = received;
+        ++dde_string_counter;
     }
-    else if(received != 'W')
-        dde_word_state = WORD_WAIT_FOR_DATA;
 }
 
-inline void word_azimuth()
+inline void word_end()
 {
-    if(is_digit(received))
+    parse_azimuth();
+    parse_elevation();
+    if(is_coordinates_correct())
     {
-        azimuth_buffer *= 10;
-        azimuth_buffer += atoi(received);
-    }
-    else if(ASCII_DDE_STRING_BEGIN == received)
-        dde_word_state = WORD_BEGIN;
-    else if(' ' == received)
-    {
-        if(is_azimuth_ok())
-            dde_word_state = WORD_AZIMUTH_CHECKED;
-        else
-            dde_word_state = WORD_WAIT_FOR_DATA;
+        store_coordinates();
+        dde_state = WORD_WAIT_FOR_RESET;
     }
     else
-    {
-        dde_word_state = WORD_WAIT_FOR_DATA;
-    }
+        dde_state = WORD_ERROR;
 }
 
-inline void word_azimuth_checked()
+inline void parse_azimuth()
 {
-    if(is_digit(received))
-    {
-        elevation_buffer = atoi(received);
-        dde_word_state = WORD_ELEVATION;
-    }
-    else if(ASCII_DDE_STRING_BEGIN == received)
-        dde_word_state = WORD_BEGIN;
+    if(is_digit(dde_string[0]))
+        azimuth_buffer = 100 * atoi(dde_string[0]);
     else
-        dde_word_state = WORD_WAIT_FOR_DATA;
+        dde_state = WORD_ERROR;
+
+    if(is_digit(dde_string[1]))
+        azimuth_buffer += 10 * atoi(dde_string[1]);
+    else
+        dde_state = WORD_ERROR;
+
+    if(is_digit(dde_string[2]))
+        azimuth_buffer += atoi(dde_string[2]);
+    else
+        dde_state = WORD_ERROR;
 }
 
-inline void word_elevation()
+inline void parse_elevation()
 {
-    if(is_digit(received))
-    {
-        elevation_buffer *= 10;
-        elevation_buffer += atoi(received);
-    }
-    else if(ASCII_DDE_STRING_BEGIN == received)
-        dde_word_state = WORD_BEGIN;
-    else if(ASCII_DDE_STRING_END == received)
-    {
-        if(is_elevation_ok())
-        {
-            azimuth = azimuth_buffer;
-            elevation = elevation_buffer;
-            dde_word_state = WORD_COORDINATES_STORED;
-        }
-        else
-            dde_word_state = WORD_WAIT_FOR_DATA;
-
-    }
+    if(is_digit(dde_string[4]))
+        elevation_buffer = 100 * atoi(dde_string[4]);
     else
-        dde_word_state = WORD_WAIT_FOR_DATA;
+        dde_state = WORD_ERROR;
+
+    if(is_digit(dde_string[5]))
+        elevation_buffer += 10 * atoi(dde_string[5]);
+    else
+        dde_state = WORD_ERROR;
+
+    if(is_digit(dde_string[6]))
+        elevation_buffer += atoi(dde_string[6]);
+    else
+        dde_state = WORD_ERROR;
 }
 
-inline void word_coordinates_stored()
+inline uint8_t is_coordinates_correct()
 {
-    if(ASCII_DDE_STRING_BEGIN == received)
-        dde_word_state = WORD_BEGIN;
-    else
-        dde_word_state = WORD_WAIT_FOR_DATA;
+    if(WORD_ERROR == dde_state)
+        return (uint8_t)0;
+    if(!is_azimuth_correct())
+        return (uint8_t)0;
+    if(!is_elevation_correct())
+        return (uint8_t)0;
+    return (uint8_t)1;
+}
+
+inline void store_coordinates()
+{
+    azimuth = azimuth_buffer;
+    elevation = elevation_buffer;
+}
+
+inline void word_error()
+{
+    //
 }
 
 inline uint8_t is_digit(uint8_t c)
@@ -125,23 +122,24 @@ inline uint8_t is_digit(uint8_t c)
         return (uint8_t)0;
 }
 
-inline uint8_t is_azimuth_ok()
+inline uint8_t is_azimuth_correct()
 {
     if((azimuth_buffer >= 0) && (azimuth_buffer <= 360))
-        return 1;
+        return (uint8_t)1;
     else
-        return 0;
+        return (uint8_t)0;
 }
 
-inline uint8_t is_elevation_ok()
+inline uint8_t is_elevation_correct()
 {
-    if((elevation_buffer >= 0) && (elevation_buffer <= 360))
-        return 1;
+    if((elevation_buffer >= 0) && (elevation_buffer <= 90))
+        return (uint8_t)1;
     else
-        return 0;
+        return (uint8_t)0;
 }
 
 inline uint8_t atoi(uint8_t a)
 {
-    return a - ASCII_ZERO;
+    a -= ASCII_ZERO;
+    return a;
 }
