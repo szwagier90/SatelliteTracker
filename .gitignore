@@ -16,3 +16,5 @@
 
 Project/SatelliteTracker/Debug
 *.pbxproj
+*.cogui
+*.comarker
