@@ -3,7 +3,6 @@
 #include "stm32f0xx_usart.h"
 #include "stm32f0xx_misc.h"
 #include "stm32f0xx_tim.h"
-#include "main.h"
 
 void RCC_conf(void);
 void GPIO_conf(void);
@@ -20,27 +19,9 @@ int main(void)
     NVIC_conf();
     TIM_conf();
 
+    interrupts_init();
     while(1)
     {
-        azimuth_pulse = 600;
-        elevation_pulse = 4000;
-
-        TIM_OCInitStructure.TIM_Pulse = azimuth_pulse;
-        TIM_OC1Init(TIM1, &TIM_OCInitStructure);
-        TIM_OCInitStructure.TIM_Pulse = elevation_pulse;
-        TIM_OC4Init(TIM1, &TIM_OCInitStructure);
-
-        delay(6000000);
-
-        azimuth_pulse = 4000;
-        elevation_pulse = 600;
-
-        TIM_OCInitStructure.TIM_Pulse = azimuth_pulse;
-        TIM_OC1Init(TIM1, &TIM_OCInitStructure);
-        TIM_OCInitStructure.TIM_Pulse = elevation_pulse;
-        TIM_OC4Init(TIM1, &TIM_OCInitStructure);
-
-        delay(6000000);
     }
 }
 
@@ -123,20 +104,6 @@ void TIM_conf(void)
     TIM_TimeBaseStructure.TIM_ClockDivision = 0;
     TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
     TIM_TimeBaseInit(TIM1, &TIM_TimeBaseStructure);
-
-    TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
-    TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-    TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
-    TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Reset;
-
-    TIM_OCInitStructure.TIM_Pulse = 1500;
-    TIM_OC1Init(TIM1, &TIM_OCInitStructure);
-
-    TIM_OCInitStructure.TIM_Pulse = 1500;
-    TIM_OC4Init(TIM1, &TIM_OCInitStructure);
-
-    TIM_Cmd(TIM1, ENABLE);
-    TIM_CtrlPWMOutputs(TIM1, ENABLE);
 }
 
 void delay(uint32_t time)
