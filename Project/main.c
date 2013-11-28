@@ -20,6 +20,7 @@ int main(void)
     TIM_conf();
 
     interrupts_init();
+
     while(1)
     {
     }
