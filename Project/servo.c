@@ -1,7 +1,9 @@
 #include "servo.h"
 
-inline void setServoAngle(int16_t angle, enum servoCoordinate coordinate)
+inline void initServo(int16_t angle, enum servoCoordinate coordinate)
 {
+    TIM_OCInitTypeDef TIM_OCInitStructure;
+
     TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
     TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
@@ -9,65 +11,70 @@ inline void setServoAngle(int16_t angle, enum servoCoordinate coordinate)
 
     TIM_OCInitStructure.TIM_Pulse = angleToPulse(angle);
 
+    TIM_OC1Init(TIM1, &TIM_OCInitStructure);
+    TIM_OC4Init(TIM1, &TIM_OCInitStructure);
+}
+
+inline void setServoAngle(int16_t angle, enum servoCoordinate coordinate)
+{
     if(COORDINATE_AZIMUTH == coordinate)
-        TIM_OC1Init(TIM1, &TIM_OCInitStructure);
+        TIM1->CCR1 = angleToPulse(angle);
     else if(COORDINATE_ALTITUDE == coordinate)
-        TIM_OC4Init(TIM1, &TIM_OCInitStructure);
+        TIM1->CCR4 = angleToPulse(angle);
 }
 
 inline uint16_t angleToPulse(int16_t angle)
 {
-    int16_t angle_multiplier = angle;
-    int16_t pulse = SERVO_PULSE_CENTER;
-
-    if(angle_multiplier < 0)
-        angle_multiplier *= -1;
-
-    if(angle_multiplier >= 45)
-        angle_multiplier -= 45;
+    int32_t pulse = SERVO_PULSE_CENTER;
 
     if(angle <= -90)
-    {
         pulse = SERVO_ANGLE_NEG_90;
-    }
-    else if(angle < -45)
+    else if(angle < -45) // -90 < angle < -45
     {
-        pulse = SERVO_ANGLE_NEG_90
-        pulse -= SERVO_ANGLE_NEG_45;
-        pulse /= 45;
-        pulse *= angle_multiplier;
-        pulse += SERVO_ANGLE_NEG_90;
+        angle *= -1;
+        angle -= 45;
+        pulse = calculateNegativePulse(SERVO_ANGLE_NEG_90, SERVO_ANGLE_NEG_45, angle);
     }
-    else if(angle < 0)
+    else if(angle < 0) // -45 <= angle < 0
     {
-        pulse = SERVO_ANGLE_NEG_45
-        pulse -= SERVO_ANGLE_POS_0;
-        pulse /= 45;
-        pulse *= angle_multiplier;
-        pulse += SERVO_ANGLE_NEG_45;
+        angle *= -1;
+        pulse = calculateNegativePulse(SERVO_ANGLE_NEG_45, SERVO_ANGLE_POS_0, angle);
     }
-    else if(angle < 45)
+    else if(angle < 45) // 0 <= angle < 45
+        pulse = calculatePositivePulse(SERVO_ANGLE_POS_0, SERVO_ANGLE_POS_45, angle);
+    else if(angle < 90) // 45 <= angle < 90
     {
-        pulse = SERVO_ANGLE_POS_0
-        pulse -= SERVO_ANGLE_POS_45;
-        pulse /= 45;
-        pulse *= angle_multiplier;
-        pulse += SERVO_ANGLE_POS_0;
-    }
-    else if(angle < 90)
-    {
-        pulse = SERVO_ANGLE_POS_45
-        pulse -= SERVO_ANGLE_POS_90;
-        pulse /= 45;
-        pulse *= angle_multiplier;
-        pulse += SERVO_ANGLE_POS_45;
+        angle -= 45;
+        pulse = calculatePositivePulse(SERVO_ANGLE_POS_45, SERVO_ANGLE_POS_90, angle);
     }
     else if(angle >= 90)
-    {
         pulse = SERVO_ANGLE_POS_90;
-    }
     else
         pulse = SERVO_ANGLE_POS_0;
+
+    return pulse;
+}
+
+inline uint32_t calculatePositivePulse(uint16_t leftEdgePulse, uint16_t rightEdgePulse, uint16_t angleMultiplier)
+{
+    int32_t pulse;
+
+    pulse = rightEdgePulse - leftEdgePulse;
+    pulse *= angleMultiplier;
+    pulse /= 45;
+    pulse += leftEdgePulse;
+
+    return pulse;
+}
+
+inline uint32_t calculateNegativePulse(uint16_t leftEdgePulse, uint16_t rightEdgePulse, uint16_t angleMultiplier)
+{
+    int32_t pulse;
+
+    pulse = leftEdgePulse - rightEdgePulse;
+    pulse *= angleMultiplier;
+    pulse /= 45;
+    pulse += rightEdgePulse;
 
     return pulse;
 }

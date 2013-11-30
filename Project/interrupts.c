@@ -13,8 +13,8 @@ void interrupts_init(void)
 
 inline void init_and_power_on_servos(void)
 {
-    setServoAngle(0, COORDINATE_AZIMUTH);
-    setServoAngle(0, COORDINATE_ALTITUDE);
+    initServo(0, COORDINATE_AZIMUTH);
+    initServo(0, COORDINATE_ALTITUDE);
 
     TIM_Cmd(TIM1, ENABLE);
     TIM_CtrlPWMOutputs(TIM1, ENABLE);
@@ -32,7 +32,7 @@ void USART1_IRQHandler(void)
 
         if('k' == received)
         {
-            if(ANTENNA_STATE_CALIBRATION != antenna_state)
+            if(ANTENNA_STATE_NORMAL == antenna_state)
                 antenna_state = ANTENNA_STATE_CALIBRATION;
             else
                 antenna_state = ANTENNA_STATE_NORMAL;
@@ -201,6 +201,12 @@ inline void set_next_antenna_direction(void)
 
 inline void set_up_antenna(void)
 {
-    setServoAngle(azimuth - antenna_direction_angle, COORDINATE_AZIMUTH);
+    int16_t azimuthAngle;
+
+    azimuthAngle = azimuth - antenna_direction_angle;
+    if(azimuthAngle > 180)
+        azimuthAngle -= 360;
+
+    setServoAngle(azimuthAngle, COORDINATE_AZIMUTH);
     setServoAngle(altitude, COORDINATE_ALTITUDE);
 }

@@ -26,13 +26,13 @@ volatile enum
 
 volatile enum
 {
-    ANTENNA_STATE_BEFORE_INIT = 0x00, ANTENNA_STATE_NORMAL = 0x80, ANTENNA_STATE_CALIBRATION = 0x10
-} antenna_state = ANTENNA_STATE_BEFORE_INIT;
+    ANTENNA_STATE_NORMAL = 0x80, ANTENNA_STATE_CALIBRATION = 0x10, ANTENNA_STATE_ERROR = 0x20
+} antenna_state = ANTENNA_STATE_NORMAL;
 
 volatile uint8_t received = 0x0;
 
-volatile uint8_t azimuth = 0x0;
-volatile uint8_t altitude = 0x0;
+volatile int16_t azimuth = 0x0;
+volatile int16_t altitude = 0x0;
 
 volatile uint8_t dde_string[DDE_STRING_LENGTH];
 volatile uint8_t dde_string_counter = 0x0;
