@@ -26,7 +26,7 @@ volatile enum
 
 volatile enum
 {
-    ANTENNA_STATE_NORMAL = 0x80, ANTENNA_STATE_CALIBRATION = 0x10, ANTENNA_STATE_ERROR = 0x20
+    ANTENNA_STATE_NORMAL = 0x80, ANTENNA_STATE_WARNING = 0xc0, ANTENNA_STATE_ERROR = 0x20, ANTENNA_STATE_CALIBRATION = 0x10
 } antenna_state = ANTENNA_STATE_NORMAL;
 
 volatile uint8_t received = 0x0;
@@ -39,8 +39,8 @@ volatile uint8_t dde_string_counter = 0x0;
 
 volatile uint16_t antenna_direction_angle = 0;
 
-volatile uint16_t azimuth_pulse = SERVO_PULSE_CENTER; //correct to pulse
-volatile uint16_t altitude_pulse = SERVO_PULSE_CENTER; //correct to pulse
+volatile uint16_t azimuth_pulse = SERVO_PULSE_CENTER;
+volatile uint16_t altitude_pulse = SERVO_PULSE_CENTER;
 
 void interrupts_init(void);
 inline void init_and_power_on_servos(void);

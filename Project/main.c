@@ -3,12 +3,15 @@
 #include "stm32f0xx_usart.h"
 #include "stm32f0xx_misc.h"
 #include "stm32f0xx_tim.h"
+#include "stm32f0xx_exti.h"
+#include "stm32f0xx_syscfg.h"
 
 void RCC_conf(void);
 void GPIO_conf(void);
 void USART_conf(void);
 void NVIC_conf(void);
 void TIM_conf(void);
+void EXTI_conf(void);
 void delay(uint32_t time);
 
 int main(void)
@@ -18,6 +21,7 @@ int main(void)
     USART_conf();
     NVIC_conf();
     TIM_conf();
+    EXTI_conf();
 
     interrupts_init();
 
@@ -29,9 +33,11 @@ int main(void)
 void RCC_conf(void)
 {
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
-    SysTick_Config(SystemCoreClock / 5); //SystemCoreClock - ile na sekunde; arg - do ilu musi doliczy
+    SysTick_Config(SystemCoreClock / 5);
 }
 
 void GPIO_conf(void)
@@ -66,6 +72,16 @@ void GPIO_conf(void)
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_3;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource2);
+    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource3);
 }
 
 void USART_conf(void)
@@ -92,6 +108,11 @@ void NVIC_conf(void)
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 
+    NVIC_InitStructure.NVIC_IRQChannel = EXTI2_3_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+
     USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 }
 
@@ -105,6 +126,23 @@ void TIM_conf(void)
     TIM_TimeBaseStructure.TIM_ClockDivision = 0;
     TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
     TIM_TimeBaseInit(TIM1, &TIM_TimeBaseStructure);
+}
+
+void EXTI_conf(void)
+{
+    EXTI_InitTypeDef EXTI_InitStructure;
+
+    EXTI_InitStructure.EXTI_Line = EXTI_Line2;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+    EXTI_Init(&EXTI_InitStructure);
+
+    EXTI_InitStructure.EXTI_Line = EXTI_Line3;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+    EXTI_Init(&EXTI_InitStructure);
 }
 
 void delay(uint32_t time)

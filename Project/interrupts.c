@@ -4,6 +4,7 @@
 #include "stm32f0xx_usart.h"
 #include "stm32f0xx_misc.h"
 #include "stm32f0xx_tim.h"
+#include "stm32f0xx_exti.h"
 
 void interrupts_init(void)
 {
@@ -30,19 +31,6 @@ void USART1_IRQHandler(void)
     {
         received = USART_ReceiveData(USART1);
 
-        if('k' == received)
-        {
-            if(ANTENNA_STATE_NORMAL == antenna_state)
-                antenna_state = ANTENNA_STATE_CALIBRATION;
-            else
-                antenna_state = ANTENNA_STATE_NORMAL;
-        }
-        else if('n' == received)
-        {
-            if(ANTENNA_STATE_CALIBRATION == antenna_state)
-                set_next_antenna_direction();
-        }
-
         if(ANTENNA_STATE_NORMAL == antenna_state)
         {
             if(ASCII_DDE_STRING_BEGIN == received)
@@ -55,9 +43,29 @@ void USART1_IRQHandler(void)
                 word_error();
         }
 
-        set_GPIO();
         USART_SendData(USART1, received);
     }
+}
+
+void EXTI2_3_IRQHandler(void)
+{
+    if(EXTI_GetITStatus(EXTI_Line2) != RESET)
+    {
+        antenna_state = ANTENNA_STATE_NORMAL;
+
+        EXTI_ClearITPendingBit(EXTI_Line2);
+    }
+
+    if(EXTI_GetITStatus(EXTI_Line3) != RESET)
+    {
+        antenna_state = ANTENNA_STATE_CALIBRATION;
+        set_next_antenna_direction();
+
+        EXTI_ClearITPendingBit(EXTI_Line3);
+    }
+
+    delay(200);
+    set_GPIO();
 }
 
 inline void word_reset()
