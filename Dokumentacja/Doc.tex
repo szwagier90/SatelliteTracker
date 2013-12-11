@@ -53,11 +53,11 @@
 
 	W obecnych czasach krótkofalarstwo jest domeną pasjonatów i hobbystów. Ludzie, którzy chcą bawić się sprzętem radiowym i komunikować się z różnymi częściami świata bądź swoimi bliskimi przyjaciółmi, gotowi są zainwestować w tę pasję duże ilości swojego czasu i pieniędzy. Te pasję z kolei łączą z różnymi innymi aktywnościami, na przykład zdobywanie szczytów górskich czy wyprawy w niezdobyte lub niezamieszkałe tereny. Czasami podczas takich wypraw konwencjonalne łączności krótkofalarskie są niemożliwe. Wtedy radioamator próbuje skorzystać w próbach nawiązania łączności na dalekie odległości ze zjawisk naturalnych (jak zorze polarne) lub z infrastruktury stworzonej przez samych hobbystów (amatorskie satelity krótkofalarskie krążące na niskich orbitach nad Ziemią). Jednak aby wykorzystać takie możliwości, trzeba mieć do tego odpowiedni sprzęt. Profesjonalne akcesoria do łączności satelitarnych są drogie i mało praktyczne w czasie dalekich wypraw na górskie szczyty lub nawet krótkich wycieczek poza miasto. Istnieją także tanie rozwiązania które są jednak one trudne w obsłudze, zwłaszcza w sytuacji gdy operator takiej terenowej stacji musi skupić się na prawidłowym wykonaniu łączności.
 
-	Poniższa praca skupia się na rozwiązaniu tego problemu. W rozdziale~\ref{sec:teoretical_description} przytoczone zostały ważne pojęcia związane z pracą i wielokrotnie w niej używane. W części~\ref{sec:problem_description} sformułowany został problem, który będzie rozwiązywany i zostały przedstawione jego główne założenia. Rozdział~\ref{sec:existing_possibilities} będzie swego rodzaju przedstawieniem różnych możliwości, które mogłyby być wykorzystane do rozwiązania postawionego problemu. Treść rozdziału~\ref{sec:project_realization} będzie przedstawieniem kolejnych etapów prac nad projektem. Opisane zostały poszczególne zagadnienia, urządzenia oraz sposób ich wykorzystania w projekcie. Przedstawiona została także konfiguracja każdego z modułów zastosowanego mikrokontrolera. W rozdziale~\ref{sec:how_to_use_device} opisana została poprawna obsługa i użycie urządzenia, a także konfiguracja niezbędnego oprogramowania komputerowego. Rozdział~\ref{sec:summit} będzie podsumowaniem pracy, opisem dodatkowych możliwości rozwoju projektu oraz jego słabych punktów.
+	Poniższa praca skupia się na rozwiązaniu tego problemu. W rozdziale~\ref{sec:teoretical_description} przytoczone zostały ważne pojęcia związane z pracą i wielokrotnie w niej używane. Na końcu tego rozdziału sformułowany został problem, który będzie rozwiązywany a także  zostały przedstawione jego główne założenia. Rozdział~\ref{sec:existing_possibilities} będzie swego rodzaju przedstawieniem różnych możliwości, które mogłyby być wykorzystane do rozwiązania postawionego problemu. Treść rozdziału~\ref{sec:project_realization} będzie przedstawieniem kolejnych etapów prac nad projektem. Opisane zostały poszczególne zagadnienia, urządzenia oraz sposób ich wykorzystania w projekcie. Przedstawiona została także konfiguracja każdego z modułów zastosowanego mikrokontrolera. W rozdziale~\ref{sec:how_to_use_device} opisana została poprawna obsługa i użycie urządzenia, a także konfiguracja niezbędnego oprogramowania komputerowego. Rozdział~\ref{sec:summit} będzie podsumowaniem pracy, opisem dodatkowych możliwości rozwoju projektu oraz jego słabych punktów.
 
 	\chapter{Problematyka amatorskich systemów radiowych}
 	\label{sec:teoretical_description}
-	TODO
+	Poniższy rozdział przybliża najważniejsze pojęcia związane z którkofalarstwem, jego możliwości a także problemy. Na końcu opisuje koncepcję projektu ułatwiającego pracę radioamatorów.
 		
 		\section{Radioamator}
 		Osoba zajmująca się radiotechniką niezawodowo. Istnieją radioamatorzy bierni, poprzestający na studiowaniu samego tematu krótkofalarstwa, rzadko wkraczający w~dziedzinę praktyki radioamatorskiej. Amatorzy czynni na podstawie zezwolenia odpowiednich władz budują i~uruchamiają własne, indywidualnie lub zbiorowo, krótkofalowe i~ultrakrótkofalowe stacje nadawcze małej mocy.
@@ -75,6 +75,18 @@
 			Jest to jedna z~nielicznych pasji, która pozwala na wykorzystanie własnoręcznie stworzonego sprzętu. Społeczność krótkofalowców popiera i~wręcz dopinguje budowanie i~wykorzystanie własnych urządzeń radiowych, anten a także pozostałego oprzyrządowania niezbędnego w~pracy lub ułatwiającego pracę radioamatora - jak na przykład przełączniki antenowe, wzmacniacze, klucze telegraficzne itp). Dodatkowym atutem jest brak konieczności posiadania jakichkolwiek homologacji lub zezwoleń na korzystanie z~własnych urządzeń. Najwięcej osób używa jednak urządzeń fabrycznych. Jest to droższe rozwiązanie, ale dużo łatwiejsze aby od razu zacząć 
 
 			\subsection{Amatorska Służba Radiowa}
+			Radioamatorzy posiadający urządzenia nadawczo-odbiorcze są w~stanie skomunikować się ze znaczną grupą osób w~swoim otoczeniu lub dowolnym zakątkiem kraju czy świata. To daje możliwość pomocy innym ludziom w~wymianie informacji w~sytuacjach nieprzewidzianych, nagłych wypadkach, katastrofach lub klęskach żywiołowych. Krótkofalowcy są często jedynymi, którym udaje się nawiązać łączność pomiędzy odciętymi komunikacyjnie regionami. Wielu radioamatorów angażuje się także w~szkolenie innych ludzi w~zakresie krótkofalarstwa lub dziedzin ściśle z~nim powiązanych. To pozwala łatwiej zacząć przygodę z~krótkofalarstwem.
+
+			\subsection{Hobby}
+			Najwięcej ludzi skłania się do krótkofalarstwa z~powodu hobby. Posiada wiele dyscyplin jak zawody, wyprawy, prowadzenie łączności dalekiego zasięgu, eksperymentowanie z~różnymi typami emisji lub po prostu pozostawanie w~kontakcie z~przyjaciółmi korzystając z~innego środka komunikacji od popularnych w~dzisiejszych czasach telefonii komórkowej czy Internetu.
+
+				\subsubsection{Zawody}
+				Jedną z~dziedzin rywalizacji pomiędzy radioamatorami są zawody przeprowadzane w~ściśle określonym czasie. Polegają na nawiązaniu jak największej liczby łączności z~innymi operatorami stacji i~tym samym zdobywaniu punktów przydzielanych według zasad określonych w~regulaminie. Zaliczane są tylko bezbłędne łączności potwierdzone wymienionymi znakami wywoławczymi oraz raportami o~słyszalności. Te dane po zakończeniu zawodów poddawane są weryfikacji przez organizatora przy pomocy programów komputerowych. Zwykle nagrodami są dyplomy dla osoby lub drużyny wygrywającej zawody.
+
+				\subsubsection{Wyprawy}
+				W~społeczności krótkofalarskiej popularnymi są także wyprawy zwane inaczej DXpedycjami. Radioamatorzy w~pojedynkę lub w~zorganizowanej grupie wraz z~członkami klubu zdobywają górę lub niezamieszkały teren aby tam utworzyć tymczasową stację i~przeprowadzić łączności z~innymi stacjami.
+
+				\subsubsection{Łączności lokalne}
 			\begin{wrapfigure}{r}{0.4\textwidth}
 				\vspace{-20pt}
 				\begin{center}
@@ -82,16 +94,13 @@
 				\end{center}
 				\vspace{-20pt}
 				\caption{Prosty nadajnik ręczny do pracy w~paśmie UKF}
-				\vspace{-40pt}
+				\vspace{-20pt}
 				\label{fig:ukf_handheld}
 			\end{wrapfigure}
-			Radioamatorzy posiadający urządzenia nadawczo-odbiorcze są w~stanie skomunikować się ze znaczną grupą osób w~swoim otoczeniu lub dowolnym zakątkiem kraju czy świata. To daje możliwość pomocy innym ludziom w~wymianie informacji w~sytuacjach nieprzewidzianych, nagłych wypadkach, katastrofach lub klęskach żywiołowych. Krótkofalowcy są często jedynymi, którym udaje się nawiązać łączność pomiędzy odciętymi komunikacyjnie regionami. Wielu radioamatorów angażuje się także w~szkolenie innych ludzi w~zakresie krótkofalarstwa lub dziedzin ściśle z~nim powiązanych. To pozwala łatwiej zacząć przygodę z~krótkofalarstwem.
-
-			\subsection{Hobby}
-			Najwięcej ludzi skłania się do krótkofalarstwa z~powodu hobby. Posiada wiele dyscyplin jak zawody, wyprawy, prowadzenie łączności dalekiego zasięgu, eksperymentowanie z~różnymi typami emisji lub po prostu pozostawanie w~kontakcie z~przyjaciółmi korzystając z~innego środka komunikacji od popularnych w~dzisiejszych czasach telefonii komórkowej czy Internetu.
-
-				\subsubsection{Łączności lokalne}
 				Do prowadzenia łączności ze znajomymi mieszkającymi w~naszym otoczeniu wystarczy tani nadajnik przenośny pokazany na rysunku~\ref{fig:ukf_handheld} lub samochodowy pracujący na pasmach UKF. Stosunkowo mała moc urządzeń pozwala na objęcie swoim zasięgiem czasami nawet całego miasta. W~przypadku gdy taki zasięg staje się niewystarczający, w~orężu radioamatorów pozostają tzw. przemienniki - urządzenia montowane na znacznych wysokościach (wysokich obiektach miejskich, wzniesieniach terenu), które odbierają sygnał i~nadają go powtórnie z~większą mocą. Skutkuje to wielokrotnym zwiększeniem zasięgu prowadzonych łączności nawet do kilkuset kilometrów. Przemienniki amatorskie nie nadają cały czas, aby nie zużywały energii gdy nikt z~nich nie korzysta. W~celu skorzystania z~takiego przemiennika należy go wcześniej ,,otworzyć'' sygnałem akustycznym o~określonej częstotliwości, jednym z~tonów DTMF lub sygnałów CTCSS
+
+				\subsubsection{QSL}
+				Podstawowym potwierdzeniem każdej wykonanej łączności jest wymiana znaków wywoławczych operatorów stacji oraz wymiana raportów słyszalności i~siły sygnału. To wystarczy, żeby uznać łączność za zrealizowaną. Oficjalnym i~bardzo eleganckim potwierdzeniem łączności są karty QSL\footnote{QSL - Jeden z~symboli Kodu Q używanego w~telegrafii i~krótkofalarstwie. Domyślnym jego znaczeniem jest potwierdzenie łączności.}. Są wizytówkami radioamatorów oraz kartami z~dokładnym opisem zrealizowanej łączności. Dla pewnej grupy krótkofalowców stanowią one swego rodzaju trofea ze swojej służby radiowej. Wielu z~nich skupia się na ustanawianiu łączności z~jak największą ilością stacji z~odrębnych krajów. Jest to ciekawe wyzwanie z~tego powodu, że wraz ze ,,zdobywaniem'' kolejnych krajów, stopień trudności znacząco rośnie, ponieważ istnieją kraje, w~których liczba radioamatorów jest bardzo mała, region kuli ziemskiej uznany w~społeczeństwie krótkofalarskim jako kraj jest niezamieszkały lub ze względów politycznych działalność krótkofalarska nie może funkcjonować.
 
 				\subsubsection{Łączności dalekiego zasięgu (DX)}
 				Radioamatorzy, którzy korzystają z~bardziej zaawansowanych urządzeń i~anten mogą pracować z~innymi rodzajami emisji oraz na innych pasmach (fale krótkie (KF), fale średnie). Pozwala to na realizację łączności na dużo większe odległości - opierając się na samej mocy i~charakterystyce emitowanego sygnału, wykorzystując zjawiska pogodowe, zjawisko odbicia fal lub korzystając z~amatorskich satelitów komunikacyjnych działających w~paśmie UKF. Można dzięki temu nawiązywać łączności międzykontynentalne na dystansach rzędu tysięcy kilometrów.
@@ -112,103 +121,46 @@
 					\end{wrapfigure}
 					Jednym z~najbardziej niezwykłych rodzajów łączności są te z~wykorzystaniem odbicia fali od powierzchni księżyca (EME). Do tego typu łączności wykorzystuje się zaawansowane systemy antenowe (jak przedstawiona na rysunku~\ref{fig:eme_antenna} oraz nadajniki o~wysokiej mocy. Przy EME wymagana jest duża precyzja oraz doświadczenie w~prowadzeniu takich łączności, przez co jest to dziedzina krótkofalarstwa która odstrasza początkujących radioamatorów. 
 
-
 					Antena powinna być skierowana dokładnie w~kierunku księżyca, który pozostaje w~ruchu względem powierzchni ziemi. W~związku z~tym aby powszechnie wykorzystywanymi są skomplikowane systemy obracania anten. W~przypadku złego ustawienia anteny najczęstszymi zakłóceniami sygnału są zniekształcenia czoła fali w~wyniku nakładania się fal odbitych. Typowymi dla tego rodzaju łączności są zjawiska odbioru własnego echa po około 2 sekundach od wysłania komunikatu oraz niewyjaśnione dotąd zjawisko echa z~dużym opóźnieniem. Skutkiem tego jest otrzymanie przez nadawcę swojego komunikatu ale po czasie dochodzącym nawet do kilku minut.
 
 					Łączności wykonywane tą techniką ze względu na małą skuteczność, małą pewność transmisji oraz trudności związane z~jej wykonaniem realizują tylko radioamatorzy.
 
 					\paragraph{Łączności satelitarne}
-					\begin{wrapfigure}{r}{0.4\textwidth}
-						\vspace{-20pt}
-						\begin{center}
-							\includegraphics[width=0.4\textwidth]{example_sat_construction}
-						\end{center}
-						\vspace{-20pt}
-						\caption{Konstrukcja radioamatora SQ5RJK do ręcznego ustawiania i~korygowania pozycji anteny podczas łączności satelitarnych}
-						\vspace{-10pt}
-						\label{fig:example_sat_construction}
-					\end{wrapfigure}
 					Krótkofalowcy korzystają także ze swoich satelitów. Takich satelitów niskoorbitalnych\footnote{Satelita niskoorbitalny - satelita krążący wokół Ziemi po orbicie kołowej na wysokości 10 tys. km - 500 tys. km} jest kilkadziesiąt i~co jakiś czas wysyłane są kolejne. Fale pasma UKF pozwalają na przeprowadzenie łączności z~astronautami z~międzynarodowej stacji kosmicznej ISS a także na łączności pomiędzy radioamatorami. Korzystanie z~satelitów wymaga znajomości ich pozycji na niebie, parametrów pracy oraz ciągłego korygowania ustawienia anteny. Także sama komunikacja wygląda nieco inaczej niż w~przypadku normalnej łączności. W~przypadku satelity wiadomości nadawane są na częstotliwości zwanej ,,uplink'' i~odbierane na częstotliwości oznaczonej jako ,,downlink''. Jest to uwarunkowane zasadą pracy satelity. Odbiera ona sygnały z~jednej częstotliwości i~retransmituje te same sygnały ze zwiększoną mocą na innej częstotliwości - podobnie jak to dzieje się w~przypadku przemienników amatorskich.
+					\begin{figure}[!htb]
+						\begin{center}
+							\includegraphics[width=0.8\textwidth]{example_sat_construction}
+						\end{center}
+						\caption{Konstrukcja radioamatora SQ5RJK do ręcznego ustawiania i~korygowania pozycji anteny podczas łączności satelitarnych}
+						\label{fig:example_sat_construction}
+					\end{figure}
 					W~związku z~tym, że pozycja anteny musi być na bieżąco korygowana, stosuje się skomplikowane systemy obracania anten lub rolę tę przejmuje sam radioamator i~pozycję anteny koryguje ręcznie korzystając z~takich konstrukcji jak pokazana na rysunku~\ref{fig:example_sat_construction}
-
 
 					\paragraph{Inne typy łączności}
 					Sporadycznie radioamatorzy korzystają do zrealizowania łączności z~takich zjawisk jak odbicia fal radiowych od zorzy polarnej, meteorytów a nawet chmur burzowych.
 
-				\subsubsection{QSL}
-				Podstawowym potwierdzeniem każdej wykonanej łączności jest wymiana znaków wywoławczych operatorów stacji oraz wymiana raportów słyszalności i~siły sygnału. To wystarczy, żeby uznać łączność za zrealizowaną. Oficjalnym i~bardzo eleganckim potwierdzeniem łączności są karty QSL\footnote{QSL - Jeden z~symboli Kodu Q używanego w~telegrafii i~krótkofalarstwie. Domyślnym jego znaczeniem jest potwierdzenie łączności.}. Są wizytówkami radioamatorów oraz kartami z~dokładnym opisem zrealizowanej łączności. Dla pewnej grupy krótkofalowców stanowią one swego rodzaju trofea ze swojej służby radiowej. Wielu z~nich skupia się na ustanawianiu łączności z~jak największą ilością stacji z~odrębnych krajów. Jest to ciekawe wyzwanie z~tego powodu, że wraz ze ,,zdobywaniem'' kolejnych krajów, stopień trudności znacząco rośnie, ponieważ istnieją kraje, w~których liczba radioamatorów jest bardzo mała, region kuli ziemskiej uznany w~społeczeństwie krótkofalarskim jako kraj jest niezamieszkały lub ze względów politycznych działalność krótkofalarska nie może funkcjonować.
-				\subsubsection{Zawody}
-				Jedną z~dziedzin rywalizacji pomiędzy radioamatorami są zawody przeprowadzane w~ściśle określonym czasie. Polegają na nawiązaniu jak największej liczby łączności z~innymi operatorami stacji i~tym samym zdobywaniu punktów przydzielanych według zasad określonych w~regulaminie. Zaliczane są tylko bezbłędne łączności potwierdzone wymienionymi znakami wywoławczymi oraz raportami o~słyszalności. Te dane po zakończeniu zawodów poddawane są weryfikacji przez organizatora przy pomocy programów komputerowych. Zwykle nagrodami są dyplomy dla osoby lub drużyny wygrywającej zawody.
+		\section{Koncepcja projektu}
+		\label{sec:problem_description}
+		Ciekawym połączeniem hobby krótkofalowców są wspomniane wyprawy i wyjazdy połączone z~prowadzeniem łączności satelitarnych. Łączności takie realizowane są często wykorzystując nadajniki małej mocy. Wymagane do tego są ręczne lub przenośne dwupasmowe nadajniki VHF/UHF (pracujące na falach ultrakrótkich\footnote{UKF (Ultra Krótkie Fale) - zakres fal radiowych o~częstotliwości 30MHz - 300MHz, co odpowiada długości fali 1m - 10m. W~języku angielskim oznaczane jako VHF (Very High Frequency).} i~decymetrowych\footnote{Fale decymetrowe - zakres fal radiowych o~częstotliwości 300MHz - 3GHz, co odpowiada długości fali 10cm - 100cm. W~języku angielskim oznaczane jako UHF (Ultra High Frequency).}). Na takie wyjazdy radioamatorzy przygotowują ręcznie skonstruowane lub zakupione lekkie anteny Arrow (rys.~\ref{fig:example_handheld_arrow_antenna}). 
 
-				\subsubsection{Wyprawy}
-				W~społeczności krótkofalarskiej popularnymi są także wyprawy zwane inaczej DXpedycjami. Radioamatorzy w~pojedynkę lub w~zorganizowanej grupie wraz z~członkami klubu zdobywają górę lub niezamieszkały teren aby tam utworzyć tymczasową stację i~przeprowadzić łączności z~innymi stacjami.
-
-		\section{Modulacja Szerokości Impulsu (PWM)}
-		Sposób regulowania sygnału prądowego lub napięciowego polegający na generowaniu sygnału o stałej amplitudzie i stałym okresie sygnału, lecz zmiennym współczynniku jego wypełnienia (zmiennej szerokości impulsów sygnału). Na rysunku~\ref{fig:pwm} pokazany został przykład regulacji napięcia za pomocą zmiennego współczynnika wypełnienia sygnału. 
-
-		\begin{figure}[!htb]
+		\begin{wrapfigure}{R}{0.6\textwidth}
+			\vspace{-20pt}
 			\begin{center}
-				\includegraphics[scale=0.8]{pwm}
+				\includegraphics[width=0.55\textwidth]{arrow1}
 			\end{center}
-			\caption{Regulacja napięcia sygnałem PWM}
-			\label{fig:pwm}
-		\end{figure}
-		
-		Sygnały PWM najczęściej wykorzystywane są do:
-		\begin{itemize}
-		 	\item zmiany jasności świecenia diod LED,
-		 	\item zmniejszania prędkości silników prądu stałego,
-		 	\item zmiany jasności podświetlenia wyświetlaczy LCD,
-		 	\item sterowania serwomechanizmami modelarskimi,
-		 	\item generowania sygnałów analogowych (w tym dźwięków).
-		 \end{itemize} 
+			\vspace{-20pt}
+			\caption{Ręczna antena Arrow do łączności satelitarnych, przygotowana do transmisji na paśmie 2m i~70cm}
+			\vspace{-20pt}
+			\label{fig:example_handheld_arrow_antenna}
+		\end{wrapfigure}
 
-		\section{Modulacje}
-		Modulacja jest to samorzutna lub celowa zmiana parametrów sygnału. W~kontekście krótkofalarstwa modulacja pozwala na nakładanie sygnału wejściowego (niosącego istotne dane jak na przykład głos lub dane cyfrowe do wysłania drogą radiową). Podczas prowadzenia łączności za pomocą fonii, sygnałem wejściowym (modulującym) jest sygnał zawarty w~przedziale 300Hz - 3kHz, czyli zakres częstotliwości fal sygnału mowy. Ten sygnał moduluje falę nośną o~określonej częstotliwości. W~ten sposób powstaje zmodulowany sygnał, gotowy do wypromieniowania w~przestrzeń za pomocą odpowiedniej anteny.
-		Poniżej przedstawione zostały modulacje wykorzystywane w~krótkofalarstwie.
-			
-			\subsection{AM - Modulacja amplitudy}
-			\begin{figure}[!htb]
-				\begin{center}
-					\includegraphics[scale=0.8]{modulacja_am}
-				\end{center}
-				\caption{Modulacja amplitudy fali nośnej sygnałem sinusoidalnym}
-				\label{fig:am_modulation}
-			\end{figure}
-			Modulacja amplitudy polega na takim przekształceniu fali nośnej sygnałem modulującym, aby wynikiem był sygnał o~częstotliwości fali nośnej i~amplitudzie sygnału modulującego. Szerokość takiego sygnału zmodulowanego jest równa podwojonej częstotliwości modulującej - czyli w~przypadku fonii 6kHz. Całkowita moc wyjściowego sygnału składa się w~50\% mocy nadajnika fali nośnej oraz mocy dwóch wstęg bocznych - po 25\% mocy nadajnika każda. Graficzne przedstawienie takiej modulacji pokazane jest na rysunku~\ref{fig:am_modulation}, gdzie fala nośna została zmodulowana sygnałem sinusoidalnym. 
+		Profesjonalne anteny do komunikacji satelitarnej są drogie, nieporęczne i~trudne w~transporcie. Dodatkowo wymagają drogich i~skomplikowanych systemów sterowania. Anteny Arrow mogą być ustawiane ręcznie przez operatora stacji, lecz to utrudnia prowadzenie łączności, ponieważ pozycja anteny musi być na bieżąco korygowana. Operator stacji w~czasie pracy z~satelitami korzysta z~programów do śledzenia trajektorii satelitów oraz wyznaczania użytecznych czasów przelotów satelitów. Programy takie w~dużym stopniu ułatwiają ustawianie anten w~poprawnym kierunku obliczając współrzędne horyzontalne\footnote{Układ współrzędnych horyzontalnych - układ współrzędnych gdzie położenie określa się podając dwie współrzędne: Azymut (kąt obrotu wzdłuż płaszczyzny poziomej) oraz Elewację (kąt obrotu wzdłuż płaszczyzny pionowej) względem aktualnej pozycji obserwatora.} na podstawie pozycji satelity na jej orbicie i~aktualnego położenia stacji. Najwygodniejszym rozwiązaniem dla operatorów takich terenowych stacji byłoby sprzężenie programu do śledzenia trajektorii satelitów z~układem obracającym anteną w~dobrym kierunku. Pozwoliłoby to radioamatorowi na szybkie wybranie żądanej satelity, skalibrowanie anteny oraz skupienie się na samym prowadzeniu łączności - byłby zwolniony z~nadzorowania ustawienia anteny w~czasie samej komunikacji. 
 
-			\subsection{SSB - Modulacja amplitudy z~wytłumioną wstęgą nośną}
-			Modulacja SSB jest szczególnym przypadkiem modulacji amplitudy. W~przypadku czystej modulacji AM moc nadajnika wykorzystywana jest w~50\% przez falę nośną oraz po 25\% przez każdą ze wstęg bocznych sygnału. W~modulacji SSB wytłumiona jest fala nośna oraz jedna ze wstęg bocznych. Skutkiem tego cała moc nadajnika przeznaczona jest wyłącznie na jedną wstęgę boczną modulacji amplitudy sygnału. Dodatkowymi zaletami takiej modulacji jest węższe pasmo częstotliwości emitowanej przez nadajnik, zawężenie o~50\% pasma w~odbiorniku a także mniejszą zawartość sygnałów niepożądanych i~harmonicznych wypromieniowanych przez nadajnik. Niestety te zalety wymagają nadajników o~znacznie bardziej skomplikowanych układach. 
-
-			\subsection{FM - Modulacja częstotliwości}
-			Przy modulacji częstotliwości amplituda sygnału pozostaje stała i~jest równa amplitudzie fali nośnej. Pod względem amplitudy sygnału wejściowego zmienia się natomiast częstotliwość generowanego sygnału. Związanym z~modulacją częstotliwości jest pojęcie dewiacji sygnału (inaczej odchylenia częstotliwości). Dewiacją nazywamy różnicę pomiędzy najwyższą i~najniższą częstotliwością fali nośnej w~trakcie modulacji. Jedną z~zalet modulacji częstotliwości sygnału jest większa niż dla modulacji AM odporność na zakłócenia zewnętrzne, zwykle zmieniające chwilową amplitudę sygnału. Kolejną zaletą jest to, że moc sygnału FM nie zmienia się w~procesie modulacji i~jest równa mocy niemodulowanej fali nośnej. Dzięki temu cała moc nadajnika wykorzystywana jest do przekazywania informacji. Przykład modulacji częstotliwości pokazuje rysunek~\ref{fig:fm_modulation}. 
-			\begin{figure}[!htb]
-				\begin{center}
-					\includegraphics[scale=0.8]{modulacja_fm}
-				\end{center}
-				\caption{Modulacja częstotliwości fali nośnej sygnałem sinusoidalnym}
-				\label{fig:fm_modulation}
-			\end{figure}
-		
-	\chapter{Opis problemu}
-	\label{sec:problem_description}
-	\begin{wrapfigure}{r}{0.6\textwidth}
-		\vspace{-20pt}
-		\begin{center}
-			\includegraphics[width=0.55\textwidth]{arrow1}
-		\end{center}
-		\vspace{-20pt}
-		\caption{Ręczna antena Arrow do łączności satelitarnych, przygotowana do transmisji na paśmie 2m i~70cm}
-		\vspace{-20pt}
-		\label{fig:example_handheld_arrow_antenna}
-	\end{wrapfigure}
-	Ciekawym połączeniem hobby krótkofalowców są wyjazdy połączone z~prowadzeniem łączności satelitarnych. Łączności takie realizowane są często wykorzystując nadajniki małej mocy. Wymagane do tego są ręczne lub przenośne dwupasmowe nadajniki VHF/UHF (pracujące na falach ultrakrótkich\footnote{UKF (Ultra Krótkie Fale) - zakres fal radiowych o~częstotliwości 30MHz - 300MHz, co odpowiada długości fali 1m - 10m. W~języku angielskim oznaczane jako VHF (Very High Frequency).} i~decymetrowych\footnote{Fale decymetrowe - zakres fal radiowych o~częstotliwości 300MHz - 3GHz, co odpowiada długości fali 10cm - 100cm. W~języku angielskim oznaczane jako UHF (Ultra High Frequency).}). Na takie wyjazdy radioamatorzy przygotowują ręcznie skonstruowane lub zakupione lekkie anteny Arrow (rys.~\ref{fig:example_handheld_arrow_antenna}). Profesjonalne anteny do komunikacji satelitarnej są drogie, nieporęczne i~trudne w~transporcie. Dodatkowo wymagają drogich i~skomplikowanych systemów sterowania. Anteny Arrow mogą być ustawiane ręcznie przez operatora stacji, lecz to utrudnia prowadzenie łączności, ponieważ pozycja anteny musi być na bieżąco korygowana. Operator stacji w~czasie pracy z~satelitami korzysta z~programów do śledzenia trajektorii satelitów oraz wyznaczania użytecznych czasów przelotów satelitów. Programy takie w~dużym stopniu ułatwiają ustawianie anten w~poprawnym kierunku obliczając współrzędne horyzontalne\footnote{Układ współrzędnych horyzontalnych - układ współrzędnych gdzie położenie określa się podając dwie współrzędne: Azymut (kąt obrotu wzdłuż płaszczyzny poziomej) oraz Elewację (kąt obrotu wzdłuż płaszczyzny pionowej) względem aktualnej pozycji obserwatora.} na podstawie pozycji satelity na jej orbicie i~aktualnego położenia stacji. Najwygodniejszym rozwiązaniem dla operatorów takich terenowych stacji byłoby sprzężenie programu do śledzenia trajektorii satelitów z~układem obracającym anteną w~dobrym kierunku. Pozwoliłoby to radioamatorowi na szybkie wybranie żądanej satelity, skalibrowanie anteny oraz skupienie się na samym prowadzeniu łączności - byłby zwolniony z~nadzorowania ustawienia anteny w~czasie samej komunikacji. 
-
-	Głównymi założeniami tego projektu jest niski kosztu budowy urządzenia oraz wysoka mobilność całego systemu.
+		Głównymi założeniami tego projektu są: niskie koszty budowy urządzenia oraz wysoka mobilność całego systemu.
 
 	\chapter{Przegląd dostępnych rozwiązań}
 	\label{sec:existing_possibilities}
-	TODO
+	Rozdział ten prezentuje różne możliwości realizacji projektu podzielone na jego główne składniki i porównuje je pod kątem jego założeń.
 	
 		\section{Programy do śledzenia trajektorii lotu satelitów}
 		Pierwszym elementem systemu jest program do śledzenia trajektorii lotu satelitów. Najpopularniejszymi programami do tego celu są GPredict, moduł satelitarny zawarty w~programie Logbook, Ham Radio Deluxe oraz najbardziej rozbudowany program Orbitron. Wyłącznie ostatnie dwa programy posiadają wsparcie dla protokołów komunikacyjnych obsługujących radia i~rotory antenowe.
@@ -405,7 +357,27 @@ SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource3);
 				\vspace{-10pt}
 				\label{fig:servo}
 			\end{wrapfigure}
-		Aby sterować anteną, należy ustawić w~odpowiedniej pozycji serwomechanizmy. Po pierwsze nietypowa jest sama zasada sterowania serwomechanizmami. Ważnym jest także zbadanie parametrów serwomechanizmów dostępnych do stworzenia projektu. Do zbudowania gotowego urządzenia wykorzystane zostały tanie serwomechanizmy modelarskie - Turnigy TG9e. Mają one małą moc, jednak są w~stanie obracać lekką antenę typu Arrow i~będą wystarczające do zastosowania ich w~terenie do łączności satelitarnych. Kolejną czynnością będzie ustawienie modułu sterownika STM32F0-Discovery, który odpowiedzialny jest za generowanie wymaganego przez serwomechanizmy sygnału. Następnym krokiem sterowania jest obliczenie parametrów sygnału do odpowiedniego ustawienia anteny. Ostatnim zadaniem będzie powiązanie danych z~odczytanego komunikatu DDE z~funkcjami zmieniającymi parametry sygnału sterującego serwomechanizmami.
+		Aby sterować anteną, należy ustawić w~odpowiedniej pozycji serwomechanizmy. Po pierwsze nietypowa jest sama zasada sterowania serwomechanizmami. Realizowana jest ona dzięki zastosowaniu sygnału PWM, który zostanie opisany na początku tej części. Następnie omówione zostanie pojęcie serwomechanizmu, a następnie zasada jego sterowania i obsługi. Ważnym jest także zbadanie parametrów serwomechanizmów dostępnych do stworzenia projektu. Do zbudowania gotowego urządzenia wykorzystane zostały tanie serwomechanizmy modelarskie - Turnigy TG9e. Mają one małą moc, jednak są w~stanie obracać lekką antenę typu Arrow i~będą wystarczające do zastosowania ich w~terenie do łączności satelitarnych. Kolejną czynnością będzie ustawienie modułu sterownika STM32F0-Discovery, który odpowiedzialny jest za generowanie wymaganego przez serwomechanizmy sygnału. Następnym krokiem sterowania jest obliczenie parametrów sygnału do odpowiedniego ustawienia anteny. Ostatnim zadaniem będzie powiązanie danych z~odczytanego komunikatu DDE z~funkcjami zmieniającymi parametry sygnału sterującego serwomechanizmami.
+
+			\subsection{Modulacja Szerokości Impulsu (PWM)}
+			Sposób regulowania sygnału prądowego lub napięciowego polegający na generowaniu sygnału o stałej amplitudzie i stałym okresie sygnału, lecz zmiennym współczynniku jego wypełnienia (zmiennej szerokości impulsów sygnału). Na rysunku~\ref{fig:pwm} pokazany został przykład regulacji napięcia za pomocą zmiennego współczynnika wypełnienia sygnału. 
+
+			\begin{figure}[!htb]
+				\begin{center}
+					\includegraphics[scale=0.8]{pwm}
+				\end{center}
+				\caption{Regulacja napięcia sygnałem PWM}
+				\label{fig:pwm}
+			\end{figure}
+			
+			Sygnały PWM najczęściej wykorzystywane są do:
+			\begin{itemize}
+			 	\item zmiany jasności świecenia diod LED,
+			 	\item zmniejszania prędkości silników prądu stałego,
+			 	\item zmiany jasności podświetlenia wyświetlaczy LCD,
+			 	\item sterowania serwomechanizmami modelarskimi,
+			 	\item generowania sygnałów analogowych (w tym dźwięków).
+			 \end{itemize} 
 
 			\subsection{Co to jest serwomechanizm}
 			Serwomechanizm jest to zamknięty układ sterowania ze sprzężeniem zwrotnym składający się z~prostego silnika prądu stałego z~dodatkowymi przekładniami oraz układem sterującym. Układ sterujący składa się z~potencjometru sprzężonego z~wałem, do którego przymocowane jest ramię serwomechanizmu, oraz układem regulacji. Układ sterujący może dokładnie stwierdzić w~jakiej pozycji znajduje się wał. Dzięki temu można z~dużą dokładnością prozycjonować wał. W~większości przypadków wał serwomechanizmu może przyjmować pozycje kątowe z~zakresu 0-180$^{\circ}$. Większość serwomechanizmów posiada ograniczniki, które nie pozwalają na większe wychylenia wału. Ze światem zewnętrznym serwomechanizm jest połączony za pomocą trzech przewodów - zasilania (czerwony), potencjału zerowego (czarny) oraz sygnał sterujący (biały lub żółty).
@@ -520,3 +492,33 @@ SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource3);
 	\listoffigures
 
 \end{document}
+
+
+
+
+		% \section{Modulacje}
+		% Modulacja jest to samorzutna lub celowa zmiana parametrów sygnału. W~kontekście krótkofalarstwa modulacja pozwala na nakładanie sygnału wejściowego (niosącego istotne dane jak na przykład głos lub dane cyfrowe do wysłania drogą radiową). Podczas prowadzenia łączności za pomocą fonii, sygnałem wejściowym (modulującym) jest sygnał zawarty w~przedziale 300Hz - 3kHz, czyli zakres częstotliwości fal sygnału mowy. Ten sygnał moduluje falę nośną o~określonej częstotliwości. W~ten sposób powstaje zmodulowany sygnał, gotowy do wypromieniowania w~przestrzeń za pomocą odpowiedniej anteny.
+		% Poniżej przedstawione zostały modulacje wykorzystywane w~krótkofalarstwie.
+			
+		% 	\subsection{AM - Modulacja amplitudy}
+		% 	\begin{figure}[!htb]
+		% 		\begin{center}
+		% 			\includegraphics[scale=0.8]{modulacja_am}
+		% 		\end{center}
+		% 		\caption{Modulacja amplitudy fali nośnej sygnałem sinusoidalnym}
+		% 		\label{fig:am_modulation}
+		% 	\end{figure}
+		% 	Modulacja amplitudy polega na takim przekształceniu fali nośnej sygnałem modulującym, aby wynikiem był sygnał o~częstotliwości fali nośnej i~amplitudzie sygnału modulującego. Szerokość takiego sygnału zmodulowanego jest równa podwojonej częstotliwości modulującej - czyli w~przypadku fonii 6kHz. Całkowita moc wyjściowego sygnału składa się w~50\% mocy nadajnika fali nośnej oraz mocy dwóch wstęg bocznych - po 25\% mocy nadajnika każda. Graficzne przedstawienie takiej modulacji pokazane jest na rysunku~\ref{fig:am_modulation}, gdzie fala nośna została zmodulowana sygnałem sinusoidalnym. 
+
+		% 	\subsection{SSB - Modulacja amplitudy z~wytłumioną wstęgą nośną}
+		% 	Modulacja SSB jest szczególnym przypadkiem modulacji amplitudy. W~przypadku czystej modulacji AM moc nadajnika wykorzystywana jest w~50\% przez falę nośną oraz po 25\% przez każdą ze wstęg bocznych sygnału. W~modulacji SSB wytłumiona jest fala nośna oraz jedna ze wstęg bocznych. Skutkiem tego cała moc nadajnika przeznaczona jest wyłącznie na jedną wstęgę boczną modulacji amplitudy sygnału. Dodatkowymi zaletami takiej modulacji jest węższe pasmo częstotliwości emitowanej przez nadajnik, zawężenie o~50\% pasma w~odbiorniku a także mniejszą zawartość sygnałów niepożądanych i~harmonicznych wypromieniowanych przez nadajnik. Niestety te zalety wymagają nadajników o~znacznie bardziej skomplikowanych układach. 
+
+		% 	\subsection{FM - Modulacja częstotliwości}
+		% 	Przy modulacji częstotliwości amplituda sygnału pozostaje stała i~jest równa amplitudzie fali nośnej. Pod względem amplitudy sygnału wejściowego zmienia się natomiast częstotliwość generowanego sygnału. Związanym z~modulacją częstotliwości jest pojęcie dewiacji sygnału (inaczej odchylenia częstotliwości). Dewiacją nazywamy różnicę pomiędzy najwyższą i~najniższą częstotliwością fali nośnej w~trakcie modulacji. Jedną z~zalet modulacji częstotliwości sygnału jest większa niż dla modulacji AM odporność na zakłócenia zewnętrzne, zwykle zmieniające chwilową amplitudę sygnału. Kolejną zaletą jest to, że moc sygnału FM nie zmienia się w~procesie modulacji i~jest równa mocy niemodulowanej fali nośnej. Dzięki temu cała moc nadajnika wykorzystywana jest do przekazywania informacji. Przykład modulacji częstotliwości pokazuje rysunek~\ref{fig:fm_modulation}. 
+		% 	\begin{figure}[!htb]
+		% 		\begin{center}
+		% 			\includegraphics[scale=0.8]{modulacja_fm}
+		% 		\end{center}
+		% 		\caption{Modulacja częstotliwości fali nośnej sygnałem sinusoidalnym}
+		% 		\label{fig:fm_modulation}
+		% 	\end{figure}
